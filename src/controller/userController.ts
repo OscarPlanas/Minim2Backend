@@ -72,7 +72,8 @@ const getall = async (req: Request, res: Response) => {
 };
 
 const getone = async (req: Request, res: Response) => {
-	const user = await User.findById(req.params.id);
+	const user = await User.findOne({ username: req.params.username });
+	//const user = await User.findById(req.params.id);
 	res.json(user);
 };
 
@@ -161,6 +162,7 @@ const delSerie = async (req: Request, res: Response) => {
 		res.status(200).json({ status: 'Serie deleted' });
 	});
 }
+
 
 export default {
 	register,
